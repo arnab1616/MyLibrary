@@ -40,12 +40,10 @@ function showBooks(){
     let bookS = '';
     let libraryLst = JSON.parse(localStorage.getItem('libraryList'));
     console.log(libraryLst);
-    //  if(libraryLst.length !== 0){
-    //     library = [];
-    //     for(let j =0; j<libraryLst.length; j++){
-    //         library.push(libraryLst[j]);
-    //     }
-    // }
+        library = [];
+        for(let j =0; j<libraryLst.length; j++){
+            library.push(libraryLst[j]);
+        }
     for(let i = 0; i<library.length; i++){
         const items = library[i];
         const html = 
