@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./2x/baseline_library_add_white_24dp.png">
+    <script
+    src="https://kit.fontawesome.com/4c536a6bd5.js"
+    crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logoText">
+                <img src="./2x/baseline_library_books_black_24dp.png" alt="library logo">
+                <h1 class="primaryText">Library</h1>
+            </div>
+            <div style="display: flex;">
+                <button class="addBtn" id="addBookBtn" style="margin: 0px 12px;">
+                    <strong><span class="p">+</span> Add Book</strong>
+                </button>
+                <div class="btn">
+                    <button class="loginBtn">Login</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <div class="bookDetail"></div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>Copyright <strong>©</strong>  <script>document.write(new Date().getFullYear())</script>   <strong><i><u>arnab1616</u></i></strong></p>
+        <a href="https://github.com/arnab1616"><img src="./2x/github.png" alt="github"></a>
+    </footer>
+    <div id="addBook" class="addBookModal">
+        <form action="formaction" id="bookIdForm">
+            <h3 class="secondaryText">Add a new book</h3>
+            <input type="text" name="title" id="title" placeholder="Title" maxlength="50" required>
+            <p class="error-msg" id="errorMsg"></p>
+            <input type="text" name="author" id="author" placeholder="Author" maxlength="50" required>
+            <input type="number" name="pages" id="pages" placeholder="Pages" max="50" required>
+            <input type="file" id="myFile" name="filename" multiple style="border: 1px solid gray; border-radius: 0px; padding: 6px; margin-left: 10px; margin-right: 10px;">
+            <!-- <input type="submit"> -->
+            <div class="mrk">
+                <p class="markRead">Mark as read</p>
+                <input type="checkbox" name="" class="mrkRead" onclick="
+                    markUnread();
+                ">
+            </div>
+            <div class="btn">
+                <button type="reset" class="resetBtn">Reset</button>
+                <button class="submitBtn">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <script src="script.js"></script>
+</body>
+</html>
