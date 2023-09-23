@@ -16,7 +16,7 @@ header{
     box-shadow: 1px 1px 5px 2px rgb(192, 191, 191);
 }
 .z-index{
-    z-index: -1;
+    z-index: 1;
 }
 .header .container{
     display: flex;
@@ -293,6 +293,7 @@ main{
     margin-top: -15px;
   }
 .overlay {
+    z-index: 1;
     position: fixed;
     top: 0;
     left: 0;
