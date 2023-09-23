@@ -28,12 +28,12 @@ overlay.onclick = closeaddBookModal;
 
 
 
-let library = [];
+let library = [{title : 'Game of Thrones', author : 'Rk Narayan', pages : '23', file : 'file', index : 0, makeUnread: true},
+                 {title : 'Spider Man', author : 'Jems Bond',pages : '22', file : 'file', index : 1, makeUnread: false}];
 // {title : 'Game of Thrones', author : 'Rk Narayan', pages : '23', file : 'file', index : 0, makeUnread: true},
 //                 {title : 'Spider Man', author : 'Jems Bond',pages : '22', file : 'file', index : 1, makeUnread: false}
 console.log(library);
 
-let libraryCode =[];
 showBooks();
 function showBooks(){
     
