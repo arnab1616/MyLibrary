@@ -91,11 +91,10 @@ main{
 
 .bookDetail{
     z-index: 0;
-    margin-top: 30px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3 ,minmax(auto,1fr));
-    margin-top: 50px;
+    margin-top: 30px;
     gap: 35px;
 }
 .Bookcontainer{
@@ -357,6 +356,7 @@ main{
     }
     .bookDetail{
         /* display: grid; */
+        margin-top:10px;
         grid-template-columns: minmax(auto,1fr);
     }
     .footer{
