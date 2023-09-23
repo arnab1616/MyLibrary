@@ -28,8 +28,7 @@ overlay.onclick = closeaddBookModal;
 
 
 
-let library = [{title : 'Game of Thrones', author : 'Rk Narayan', pages : '23', file : 'file', index : 0, makeUnread: true},
-                 {title : 'Spider Man', author : 'Jems Bond',pages : '22', file : 'file', index : 1, makeUnread: false}];
+let library = [];
 // {title : 'Game of Thrones', author : 'Rk Narayan', pages : '23', file : 'file', index : 0, makeUnread: true},
 //                 {title : 'Spider Man', author : 'Jems Bond',pages : '22', file : 'file', index : 1, makeUnread: false}
 console.log(library);
@@ -40,10 +39,11 @@ function showBooks(){
     let bookS = '';
     let libraryLst = JSON.parse(localStorage.getItem('libraryList'));
     console.log(libraryLst);
-    library = [];
-    for(let j =0; j<libraryLst.length; j++){
-        // if(libraryLst[j].title !== library[j].title)
-        library.push(libraryLst[j]);
+     if(libraryLst.length !== 0){
+        library = [];
+        for(let j =0; j<libraryLst.length; j++){
+            library.push(libraryLst[j]);
+        }
     }
     for(let i = 0; i<library.length; i++){
         const items = library[i];
@@ -73,10 +73,8 @@ function showBooks(){
                 ">Remove</button>
             </div> 
         `;
-        // libraryCode.push(html);
         bookS += html;
     }
-    // readButton();
     document.querySelector(".main .bookDetail").innerHTML = bookS;
 }
 function addBooklibray(){
@@ -98,7 +96,6 @@ function addBooklibray(){
    console.log(library.length);
 
    showBooks();
-//    readButton();
 }
 
 submitBtn.addEventListener("click",(event)=>{
@@ -120,7 +117,6 @@ function markUnread(){
         document.querySelector(".markRead").textContent = 'Mark as read';
     }
 }
-// readButton();
 function readButton(){
     for(let event = 0; event<library.length; event++){
         let it = library[event];
