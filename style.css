@@ -42,6 +42,7 @@ header{
     padding: 3px;
 }
 .loginBtn{
+    /* height: 100%; */
     font-size: 1rem;
     font-weight: 550;
     color: rgb(81, 81, 81);
@@ -72,6 +73,7 @@ main{
     justify-content: center;
 }
 .addBtn{
+    /* height: 100%; */
     padding: 12px 10px;
     font-size: 1.1rem;
     border: none;
@@ -91,6 +93,7 @@ main{
 
 .bookDetail{
     z-index: 0;
+    /* margin-top: 10px; */
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3 ,minmax(auto,1fr));
@@ -306,6 +309,41 @@ main{
   .overlay.active {
     display: inline;
   }
+  .undoBtn img{
+    width: 20px;
+    animation: 1.8s change-img infinite ;
+  }
+  @keyframes change-img {
+    50% {
+        width: 23px;
+    }
+  }
+  .undoBtn{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    /* height: 100%; */
+    padding: 3px;
+    border-radius: 0%;
+    border: none;
+    /* border-radius: ; */
+    background: #94cbbc;
+    box-shadow: 1px 1px 4px rgb(74, 74, 74);
+    animation: 1.8s change-size infinite ;
+    /* display: none; */
+  }
+  @keyframes change-size {
+    50% {
+      font-size: 1rem;
+    }
+  }
+  .undoBtn.disable{
+    display: none;
+  }
+  .undoBtn:hover{
+    background: #6fcbb3;
+    transform: scale(1.1);
+  }
 @media (min-width:1200px){
     .container{
         margin: 0px 40px;
@@ -328,9 +366,14 @@ main{
         margin: 0px 5px;
         font-size: 1.45rem;
     }
+    .logoText .primaryText.active{
+        font-size: 1.2rem;
+    }
     .logoText img{
         width: 35px;
-        /* padding: 4px; */
+    }
+    .logoText img.active{
+        width: 30px;
     }
     .loginBtn{
         font-size: 0.8rem;
@@ -339,7 +382,19 @@ main{
         cursor: pointer;
         /* padding: 10px; */
         padding: 5px 8px;
-        border-radius: 50px;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(208, 240, 244);
+    }
+    .loginBtn.active{
+        height: 100;
+        font-size: 0.6rem;
+        /* font-weight: 550; */
+        color: rgb(81, 81, 81);
+        cursor: pointer;
+        /* padding: 10px; */
+        padding: 2px 4px;
+        border-radius: 10px;
         border: none;
         background-color: rgb(208, 240, 244);
     }
@@ -351,13 +406,22 @@ main{
         font-size: 0.8rem;
         border: none;
         cursor: pointer;
-        border-radius: 50px;
+        border-radius: 10px;
+        background-color: rgba(213, 213, 213, 0.608);
+        color: rgb(67, 67, 67);
+    }
+    .addBtn.active{
+        padding: 2px;
+        font-size: 0.6rem;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
         background-color: rgba(213, 213, 213, 0.608);
         color: rgb(67, 67, 67);
     }
     .bookDetail{
         /* display: grid; */
-        margin-top:10px;
+        margin-top: 10px;
         grid-template-columns: minmax(auto,1fr);
     }
     .footer{
@@ -370,4 +434,5 @@ main{
         justify-content: center;
         width: 100%;
     }
+
 }
