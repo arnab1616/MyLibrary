@@ -15,16 +15,21 @@
     <header class="header">
         <div class="container">
             <div class="logoText">
-                <img src="./2x/baseline_library_books_black_24dp.png" alt="library logo">
-                <h1 class="primaryText">Library</h1>
+                <img  src="./2x/baseline_library_books_black_24dp.png" alt="library logo">
+                <h1 class="primaryText ">Library</h1>
             </div>
+                        <!-- <div class="undoDiv"> -->
+                            <button class="undoBtn">
+                                <img class="undoIcon" src="./2x/undo_FILL0_wght400_GRAD0_opsz24.svg" alt="undoBtn">Undo
+                            </button>
+                        <!-- </div> -->
             <div style="display: flex;">
                 <button class="addBtn" id="addBookBtn" style="margin: 0px 12px;">
                     <strong><span class="p">+</span> Add Book</strong>
                 </button>
-                <div class="btn">
+                <!-- <div class=""> -->
                     <button class="loginBtn">Login</button>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
     </header>
@@ -38,7 +43,7 @@
         <a href="https://github.com/arnab1616"><img src="./2x/github.png" alt="github"></a>
     </footer>
     <div id="addBook" class="addBookModal">
-        <form action="formaction" id="bookIdForm">
+        <form id="bookIdForm">
             <h3 class="secondaryText">Add a new book</h3>
             <input type="text" name="title" id="title" placeholder="Title" maxlength="50" required>
             <p class="error-msg" id="errorMsg"></p>
@@ -59,6 +64,7 @@
         </form>
     </div>
     <div class="overlay" id="overlay"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
