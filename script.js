@@ -35,6 +35,9 @@ console.log(library)
 const saveLocal = () => {
     localStorage.setItem('libraryList', JSON.stringify(library))
 }
+const removeLocal = () => {
+    localStorage.removeItem('libraryList')
+}
 function showLibrary(){
     let libraryLst = JSON.parse(localStorage.getItem('libraryList'))
     if(libraryLst){
@@ -52,36 +55,69 @@ function showBooks(){
         const items = library[i]
         const html = 
         `
-            <div class="Bookcontainer">
-                <div>
-                    <img src="./2x/Monkey.png" alt="" style="width:100%;">
+        <div class="Bookcontainer">
+            <div class="img-container">
+                <img id="choosenImg" src="./2x/Monkey.png" alt="" style="width:100%;">
+            </div>
+                <div style="display:flex; justify-content:space-between;" >
+                    <p><strong>Title :</strong> "${items.title}" </p>
+                    <div>
+                        <input type="file" name="" id="upload-button" class="uploadImg" accept="image/*" style="display:none;">
+                        <label for="upload-button" class="edit-img">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Edit image
+                        </label>
+                    </div>
                 </div>
-                <p><strong>Title :</strong> "${items.title}"</p>
-                <p><Strong>Author :</Strong> ${items.author}</p>
-                <p><Strong>Pages :</Strong> ${items.pages} <a class="viewBook" href="">View Book</a></p>
-                
-                <button class="read" onclick="
-                 if(this.innerHTML === 'Read'){
-                    this.innerHTML = 'Unread';
-                    this.classList.add('unread');
-                 }
-                 else{
-                    this.innerHTML = 'Read';
-                    this.classList.remove('unread');
-                 }
-                ">Read</button>
-                <button class="remove" onclick = " 
-                 removeBook(${i})
-                 displayUndoBtn()
-                 console.log(${i})
-                ">Remove</button>
-            </div> 
+            <p><Strong>Author :</Strong> ${items.author}</p>
+            <p><Strong>Pages :</Strong> ${items.pages} <a class="viewBook" href="">View Book</a></p>
+            
+            <button class="unread" onclick="
+            if(this.innerHTML === 'Unread'){
+                this.innerHTML = 'Read'
+                this.classList.remove('unread')
+                this.classList.add('read')
+            }
+            else{
+                this.innerHTML = 'Unread'
+                this.classList.remove('read')
+                this.classList.add('unread')
+            }
+            ">Unread</button>
+            <button class="remove" onclick = " 
+            removeBook(${i})
+            displayUndoBtn()
+            console.log(${i})
+            ">Remove</button>
+    </div>  
         `
         bookS += html
         
     }
     document.querySelector(".main .bookDetail").innerHTML = bookS
 }
+
+
+
+changeImg()
+function changeImg(){
+    let books = document.querySelectorAll(".Bookcontainer")
+    console.log(books.length)
+    for(let l =0; l<books.length;l++){
+        let uploadButton = books[l].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.firstElementChild
+        let choosenImg = books[l].firstElementChild.firstElementChild
+        uploadButton.onchange=()=>{
+            let reader = new FileReader()
+            reader.readAsDataURL(uploadButton.files[0])
+            console.log(uploadButton.files[0])
+            reader.onload = () =>{
+                choosenImg.setAttribute('src',reader.result)
+                console.log(reader.result)
+            }
+        }
+    }
+}
+
 function addBooklibray(){    
 
    const title = document.getElementById("title")
@@ -151,32 +187,28 @@ function undoCondition(){
     }
 }
 function undoItem(){
-    // JSON.parse(localStorage.getItem('undolibrarylist'))
     let undoElm = undoList.pop()
     let undoIndex = undoElm.index
 
     let undoLibrary = JSON.parse(localStorage.getItem('libraryList'))
     undoLibrary.splice(undoIndex, 0, undoElm)
-    // localStorage.removeItem('libraryList')
 
+    removeLocal()
     localStorage.setItem('libraryList',JSON.stringify(undoLibrary))
 }
 function removeBook(event){
     
     let libraryCode = JSON.parse(localStorage.getItem('libraryList'))
+    console.log("this is lc")
     console.log(libraryCode)
-    let item = libraryCode.splice(event,1)
+    console.log(event)
+    let it = {}
+    it = libraryCode[event]
+    libraryCode.splice(event,1)
 
-    // console.log("this is lc")
-    // console.log(libraryCode)
-    // console.log("this is item")
-    // console.log(item);
+    console.log(it);
 
-    // undoCondition()
-    undoList.push(item)
-    // undolist.push(item)
-    // saveUndoLocal()
-    // localStorage.removeItem('libraryList')
+    undoList.push(it)
     localStorage.setItem('libraryList',JSON.stringify(libraryCode))
 
     showBooks()
@@ -191,25 +223,3 @@ function markUnread(){
         document.querySelector(".markRead").textContent = 'Mark as read'
     }
 }
-
-// not working
-
-// readButton();
-// function readButton(){
-//     let unreadList = JSON.parse(localStorage.getItem('libraryList'))
-//     for(let event in unreadList){
-//         let colorRed = document.querySelector(".read")
-//         if(unreadList[event].makeUnread == true){
-//             colorRed.innerHTML= 'Read'
-//             colorRed.classList.remove('unread')
-//         }
-//         if(unreadList[event].makeUnread == false){
-
-//             colorRed.innerHTML='Unread'
-//             colorRed.classList.add('unread')
-//         }
-//         console.log(colorRed.innerHTML)
-//     }
-//     localStorage.setItem('libraryList',JSON.stringify(unreadList))
-//     showBooks();
-// }
