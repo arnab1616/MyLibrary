@@ -112,6 +112,11 @@ main{
     box-shadow: 1px 1px 6px 3px rgb(209, 209, 209);
     /* align-items: center; */
 }
+.edit-img{
+    color: rgb(78, 78, 78);
+    cursor: pointer;
+    font-size: 0.8rem;
+}
 .Bookcontainer p{
     margin: 8px 0px;
     text-align: left;
@@ -224,6 +229,27 @@ main{
     border-radius: 8px;
     border: none;
     font-size: 1rem;
+}
+#myFile{
+    display: none;
+}
+.uploadBook{
+    background-color: rgb(99, 239, 239);
+    padding: 8px 5px;
+    /* padding: auto; */
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+    box-shadow: 0.5px 0.5px 5px  rgb(164, 164, 164);
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    color: rgb(58, 58, 58);
+}
+.uploadBook:hover{
+    background-color: rgb(1, 255, 255);
+    font-size: 0.9rem;
 }
 .addBookModal form .mrk{
     display: flex;
