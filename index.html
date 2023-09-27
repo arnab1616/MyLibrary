@@ -10,6 +10,7 @@
     src="https://kit.fontawesome.com/4c536a6bd5.js"
     crossorigin="anonymous"
   ></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -18,11 +19,9 @@
                 <img  src="./2x/baseline_library_books_black_24dp.png" alt="library logo">
                 <h1 class="primaryText ">Library</h1>
             </div>
-                        <!-- <div class="undoDiv"> -->
-                            <button class="undoBtn">
-                                <img class="undoIcon" src="./2x/undo_FILL0_wght400_GRAD0_opsz24.svg" alt="undoBtn">Undo
-                            </button>
-                        <!-- </div> -->
+            <button class="undoBtn">
+                <img class="undoIcon" src="./2x/undo_FILL0_wght400_GRAD0_opsz24.svg" alt="undoBtn">Undo
+            </button>
             <div style="display: flex;">
                 <button class="addBtn" id="addBookBtn" style="margin: 0px 12px;">
                     <strong><span class="p">+</span> Add Book</strong>
@@ -49,8 +48,11 @@
             <p class="error-msg" id="errorMsg"></p>
             <input type="text" name="author" id="author" placeholder="Author" maxlength="50" required>
             <input type="number" name="pages" id="pages" placeholder="Pages" max="50" required>
-            <input type="file" id="myFile" name="filename" multiple style="border: 1px solid gray; border-radius: 0px; padding: 6px; margin-left: 10px; margin-right: 10px;">
-            <!-- <input type="submit"> -->
+            <input type="file" id="myFile" name="filename" accept=".pdf">
+            <label for="myFile" class="uploadBook">
+                <i class="fas fa-upload"></i>
+                Upload book
+            </label>
             <div class="mrk">
                 <p class="markRead">Mark as read</p>
                 <input type="checkbox" name="" class="mrkRead" onclick="
@@ -64,7 +66,7 @@
         </form>
     </div>
     <div class="overlay" id="overlay"></div>
-
+    <script></script>
     <script src="script.js"></script>
 </body>
 </html>
