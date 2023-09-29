@@ -44,15 +44,15 @@
     <div id="addBook" class="addBookModal">
         <form id="bookIdForm">
             <h3 class="secondaryText">Add a new book</h3>
+            <embed id="changePdf" src="./2x/Add pdf of your book (2).pdf" type="application/pdf" width="100%" height="110px">
+            <input type="file" name="file" id="myFile" accept="/.pdf" required>
+            <label for="myFile" class="uploadBook">
+                <i class="fas fa-upload"></i>
+                 Upload book
             <input type="text" name="title" id="title" placeholder="Title" maxlength="50" required>
             <p class="error-msg" id="errorMsg"></p>
             <input type="text" name="author" id="author" placeholder="Author" maxlength="50" required>
             <input type="number" name="pages" id="pages" placeholder="Pages" max="50" required>
-            <input type="file" id="myFile" name="filename" accept=".pdf">
-            <label for="myFile" class="uploadBook">
-                <i class="fas fa-upload"></i>
-                Upload book
-            </label>
             <div class="mrk">
                 <p class="markRead">Mark as read</p>
                 <input type="checkbox" name="" class="mrkRead" onclick="
@@ -60,10 +60,14 @@
                 ">
             </div>
             <div class="btn">
-                <button type="reset" class="resetBtn">Reset</button>
+                <button type="button" class="resetBtn" id="cancelBtn">Cancel</button>
                 <button class="submitBtn">Submit</button>
             </div>
         </form>
+    </div>
+    <div id="pdfContainer">
+        <button class="closeBtn" type="cancel"><img src="./1x/cancel_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
+        <iframe id="choosenPdf" src="./2x/Add pdf of your book (2).pdf" frameborder="0" width="100%" height="700px"></iframe>
     </div>
     <div class="overlay" id="overlay"></div>
     <script></script>
