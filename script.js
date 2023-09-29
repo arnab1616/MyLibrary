@@ -25,7 +25,9 @@ addBtn.addEventListener("click",()=>{
     head.classList.add('z-index')
 })
 overlay.onclick = closeaddBookModal
-
+document.querySelector("#cancelBtn").addEventListener("click",()=>{
+    closeaddBookModal()
+})
 let library = []
  
 // {title : 'Game of Thrones', author : 'Rk Narayan', pages : '23', file : 'file', index : 0, makeUnread: true},
@@ -70,7 +72,7 @@ function showBooks(){
                     </div>
                 </div>
             <p><Strong>Author :</Strong> ${items.author}</p>
-            <p><Strong>Pages :</Strong> ${items.pages} <a class="viewBook" href="">View Book</a></p>
+            <p><Strong>Pages :</Strong> ${items.pages} <button class="viewBook" onclick = "showPdf(${i})"><u>View Book</u></button></p>
             
             <button class="unread" onclick="
             if(this.innerHTML === 'Unread'){
@@ -117,22 +119,50 @@ function changeImg(){
         }
     }
 }
-
+function showPdf(ind){
+    document.querySelector("#pdfContainer").classList.add('active')
+    document.querySelector("#choosenPdf").setAttribute('src', library[ind].file)
+}
+closePdf()
+function closePdf(){
+    document.querySelector(".closeBtn").addEventListener("click",()=>{
+        document.querySelector("#pdfContainer").classList.remove('active')
+    })
+}
+const pdfMaker = (e)=>{
+    const myfile = document.querySelector("#myFile")
+    const fileHref = document.querySelector("#changePdf")
+    const choosePdf = document.getElementById("choosenPdf")
+    myfile.addEventListener("change",()=>{
+        let pdfreader = new FileReader()
+        pdfreader.readAsDataURL(myfile.files[0])
+        console.log(myfile.files[0])
+                    
+        pdfreader.addEventListener("load",()=>{
+            fileHref.setAttribute('src', pdfreader.result)
+            library[e].file = pdfreader.result
+        })
+    })
+    
+}
+pdfMaker()
 function addBooklibray(){    
 
    const title = document.getElementById("title")
    const author = document.getElementById("author")
    const pages = document.getElementById("pages")
    const myFile = document.getElementById("myFile")
+   const fileHref = document.querySelector("#changePdf").getAttribute('src')
    const readElm = document.querySelector(".mrk .mrkRead")
    const libraryElm = {
         title : title.value,
         author: author.value,
         pages : pages.value,
-        file  : myFile.value,
+        file  : fileHref,
         makeUnread  : readElm.checked,
         index : library.length
    }
+   pdfMaker(libraryElm.index)
    library.push(libraryElm)
    saveLocal()
    console.log("LIbrary Length",library.length)
