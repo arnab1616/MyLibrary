@@ -121,21 +121,20 @@ main{
     margin: 8px 0px;
     text-align: left;
 }
-.Bookcontainer a{
+.Bookcontainer .viewBook{
+    background: transparent;
     margin-left: 8px;
-    font-size: 0.8rem;
-}
-.Bookcontainer a:hover{
-    /* width: 100px; */
     padding:  5px;
+    color: rgb(9, 66, 120);
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+.Bookcontainer .viewBook:hover{
+    color: rebeccapurple;
+    transform: translatey(-10%) ;
     border-radius: 10px;
     background-color: #cacaca;
-    margin-left: 5px;
-    /* transform: translate(-50%,10px) ; */
-    /* margin-bottom: 100px; */
-}
-.viewBook:hover{
-    transform: translatey(-20%) ;
+
 }
 .Bookcontainer button{
     padding: 10px;
@@ -369,6 +368,31 @@ main{
   .undoBtn:hover{
     background: #6fcbb3;
     transform: scale(1.1);
+  }
+  #pdfContainer{
+    transform: scale(0);
+    position: fixed;
+    top: 0px;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    background-color: rgb(229, 229, 229);
+  }
+  #pdfContainer.active{
+    transform: scale(1);
+  }
+  .closeBtn{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    padding: 4px;
+  }
+  .closeBtn:hover{
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgb(183, 183, 183);
   }
 @media (min-width:1200px){
     .container{
